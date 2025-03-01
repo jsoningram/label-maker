@@ -6,10 +6,12 @@ import hasWindow from '@/utils/hasWindow';
 import Label from '@/components/Label/Label';
 
 export default function Page() {
-  const labelData = hasWindow
-    ? sessionStorage.getItem('labelData') || '[{}]'
-    : '[{}]';
-  const data: Product[][] = JSON.parse(labelData);
+  const labelData = hasWindow && sessionStorage.getItem('labelData');
+  const data: Product[][] = labelData ? JSON.parse(labelData) : null;
+
+  if (!data) {
+    return null;
+  }
 
   return (
     <div className="ml-auto mr-auto mt-2 w-[775px]">
