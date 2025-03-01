@@ -12,14 +12,14 @@ datasource db {
 
 model Product {
   id            String   @id @default(cuid())
+  collection    String
   product_id    String   @unique
-  product_image String
+  barcode       String
   model         String
   size          String
-  barcode       BigInt
-  color         String
-  color_code    Int
   temple        Int
-  barcode_image String   @unique
-  brand         String
+  color_code    Int
+  color         String
+  product_image String
+  barcode_image String
 }

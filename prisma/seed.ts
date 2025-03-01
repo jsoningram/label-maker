@@ -41,8 +41,7 @@ function getTemple(input: string): number {
 }
 
 function getModel(input: string): string {
-  const match = input.match(/^(\d+)-/);
-
+  const match = input.match(/^([A-Za-z0-9\s]+)-/);
   return match ? match[1].trim() : 'NA';
 }
 
@@ -58,16 +57,16 @@ async function main() {
       where: { product_id: product.attr0 },
       update: {},
       create: {
+        collection: product.attr8,
         product_id: product.attr0,
-        product_image: product.attr1,
+        barcode: product.attr4,
         model: getModel(product.attr2),
         size: getSize(product.attr3),
-        barcode: Number(product.attr4),
-        color: product.attr5 ?? '',
-        color_code: getColorCode(product.attr2),
         temple: getTemple(product.attr6),
+        color_code: getColorCode(product.attr2),
+        color: product.attr5 ?? '',
+        product_image: product.attr1,
         barcode_image: product.attr7,
-        brand: product.attr8,
       },
     });
   }
