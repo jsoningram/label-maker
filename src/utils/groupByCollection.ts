@@ -1,6 +1,6 @@
 import { Product } from '@prisma/client';
 
-const groupByCollection = (selectedProducts) => {
+const groupByCollection = (selectedProducts: Product[]) => {
   const map = new Map();
   const groupedProducts: Product[][] = [];
 
