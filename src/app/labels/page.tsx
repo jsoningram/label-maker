@@ -2,12 +2,14 @@
 
 import { Product } from '@prisma/client';
 
+import hasWindow from '@/utils/hasWindow';
 import Label from '@/components/Label/Label';
 
 export default function Page() {
-  const data: Product[][] = JSON.parse(
-    sessionStorage.getItem('labelData') || '[{}]',
-  );
+  const labelData = hasWindow
+    ? sessionStorage.getItem('labelData') || '[{}]'
+    : '[{}]';
+  const data: Product[][] = JSON.parse(labelData);
 
   return (
     <div className="ml-auto mr-auto mt-2 w-[775px]">
